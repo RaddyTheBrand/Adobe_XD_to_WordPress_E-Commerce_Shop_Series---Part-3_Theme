@@ -1,0 +1,415 @@
+@import "_breakpoints.scss";
+
+/* Veriables
+==============================================*/
+$primary-color: rgba(0,0,0,1);
+$headings-font: 'Playfair Display', serif;
+$body-font: stolzl, sans-serif;
+$mobile-padding: 16px;
+$desktop-padding: 36px;
+
+/* Main
+==============================================*/
+
+html { font-size: 62.5%; }
+
+body {
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: $body-font;
+    font-weight: 300;
+    font-style: normal;
+    color: $primary-color;
+    line-height: 3rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    font-family: $headings-font;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+h2 { font-size: 2.8rem; }
+
+@include tablet-portrait {
+    h1 { font-size: 6.5rem; }
+    h2 { font-size: 4.5rem; }
+} 
+
+/* Links */
+a:link {
+    color: $primary-color;
+    &:hover {
+        color: rgba(0,0,0,0.6);
+    }
+}
+
+a:visited, a:active { color: $primary-color; }
+
+/* Inputs */
+input {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+
+/* Layout Elements
+==============================================*/
+
+.wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1280px;
+
+    &__heading { 
+        text-align: center;
+        max-width: 600px;
+
+        span {
+            display: block;
+            letter-spacing: 0.2rem;
+            margin-bottom: 10px;
+        }
+    }
+
+}
+
+
+.button {
+    display: inline-block;
+    color: $primary-color;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border: 2px solid $primary-color;
+
+    @include tablet-portrait {
+        font-size: 1.6rem;
+    }
+}
+
+.button-white {
+    background-color: #fff;
+}
+
+section, footer, .content-area, main {
+    margin: 0 auto;
+    padding: $mobile-padding;
+
+    @include tablet-portrait {
+        padding: $desktop-padding;
+    }
+}
+
+
+
+
+
+/* Header
+==============================================*/
+
+.main-header {
+    display: grid;
+    gap: 10px;
+    grid-template: 
+    'nav logo tools'
+    ;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 18px;
+    background-color: rgba(255,255,255,1);
+    position: absolute;
+    top:0; left: 0; right: 0;
+    z-index: 1;
+
+    a { text-decoration: none; font-weight: 400; }
+
+    &__logo {
+        grid-area: logo;
+        font-size: 2.4rem;
+        font-weight: 600;
+        justify-self: center;
+        align-self: center;
+    }
+
+    &__nav {
+        grid-area: nav;
+        justify-self: start;
+        align-self: center;
+
+        .menu { 
+            display: none;
+            padding: 0;
+            list-style: none;
+
+            .menu-item {
+                display: inline-block;
+                padding: 0 32px;
+            }
+        }
+
+        .menu-link {
+            width: 2.4rem;
+            height: 1.4rem;
+            position: relative;
+
+            span {
+                position: absolute;
+                left: 0; right: 0;
+                display: block;
+                height: 0.2rem;
+                background-color: rgba(0,0,0,1);
+
+                &:first-child { top: 0; }
+                &:last-child { bottom: 0; }
+            }
+        }
+    }
+
+    &__tools {
+        grid-area: tools;
+        justify-self: end;
+        align-self: center;
+
+        .tools-icon {
+            padding: 0.6rem;
+        } 
+    }
+
+
+    @include tablet-portrait {
+        grid-template: 
+        'logo nav tools'
+        ;
+        background-color: rgba(255,255,255,0);
+
+        &__logo {
+            justify-self: start;
+        }
+
+        &__nav {
+            justify-self: center;
+
+            .menu { display: block; }
+            .menu-link { display: none; }
+        }
+    }
+}
+
+/* Hero
+==============================================*/
+.hero {
+    position: relative;
+
+    &::after {
+        content: "";
+        background-image: url("../images/hero-image@2x.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 60%;
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+    }
+
+    &__wrapper {
+        text-decoration: none;
+        height: 32vh;
+        display: grid;
+        align-content: end;
+
+        h1 {
+            margin: 26px;
+            padding-bottom: 20px;
+        }
+    }
+
+    @include tablet-portrait {
+
+        &__wrapper {
+            height: 88vh;
+            align-content: center;
+        }
+    }
+}
+
+/* Promo Card
+==============================================*/
+.standard-promo {
+    display: grid;
+
+    @include lg {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 450px;
+        gap: 40px;
+
+        .promo-card {
+            display: grid;
+            align-content: center;
+
+            &__heading, &__body { max-width: 300px; text-align: center; }
+            &__heading { margin: 0; }
+            &__body { line-height: 3rem; }
+
+            &--women, &--men {
+                background-size: cover;
+                background-position: right;
+            }
+        }
+    }
+}
+
+
+/* Block */
+.promo-card {
+    text-decoration: none;
+    padding: $mobile-padding;
+    margin-bottom: 20px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    /* Element */
+    &__body { max-width: 70%; }
+
+    /* Modifiers */
+    &--gray { background-color: #f2f3f5; }
+
+    &--women {
+        background-image: url("../images/female.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: calc(100% - -50px);
+    }
+
+    &--men {
+        background-image: url("../images/male.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: calc(100% - -30px);
+    }
+}
+
+
+/* Shop Section */
+.shop-section {
+    &__heading, &__body {
+        text-align: center;
+    }
+}
+
+
+/* Newsletter */
+.newsletter {
+    display: grid;
+    align-items: center;
+    gap: 20px;
+
+    &__heading {
+        max-width: 500px;
+        line-height: 4rem;
+        font-size: 3rem;
+        margin: 0;
+        font-style: italic;
+    }
+
+    @include tablet-portrait {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.form {
+    &__email {
+        width: 100%;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $primary-color;
+    }
+
+    &__submit {
+        width: 100%;
+    }
+}
+
+
+/* Footer */
+.footer {
+    display: grid;
+    gap: 20px;
+
+    @include tablet-portrait {
+        grid-template-columns: repeat(4, 1fr)
+    }
+
+    &-container {
+        &__heading {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &__body {
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            a { 
+                display: block;
+                padding: 8px 0;
+            }
+        }
+
+        @include tablet-portrait {
+
+            &__body { display: block; }
+            &__heading {
+                justify-content: start;
+                align-items: center;
+
+                svg {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+/* CopyRight */
+.copyright {
+    margin-top: 20px;
+    text-align: center;
+
+    &__social {
+        a { padding: 10px; }
+    }
+ 
+    &__body { margin: 40px 0; }
+}
+
+
+/* Page Hero */
+.page-hero {
+    display: grid;
+    height: 60vh;
+    background-color: #ececec;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-items: center;
+    align-items: center;
+    color: #fff;
+    margin: 20px 0;
+
+    &__heading { color: #fff; }
+}
