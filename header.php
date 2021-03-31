@@ -38,11 +38,14 @@
 
     </header>
 
+
     <div class="mobile-menu">
-            <?php
-                wp_nav_menu( array(
-                    'theme_location' => 'top-menu',
-                    'container' => false
-                ));
-            ?>
+
+        <?php
+            wp_nav_menu( array(
+                'theme_location' => 'top-menu',
+                'container' => false
+            ));
+        ?>
+
     </div>

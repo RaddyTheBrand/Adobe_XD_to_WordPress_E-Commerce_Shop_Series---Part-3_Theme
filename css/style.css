@@ -158,7 +158,6 @@ section, footer, .content-area, main {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  /* Change color of dropdown links on hover */
 }
 
 .main-header__nav .menu {
@@ -203,10 +202,9 @@ section, footer, .content-area, main {
   display: none;
   padding: 0;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: #fff;
   min-width: 140px;
   z-index: 1;
-  /* Links inside the dropdown */
 }
 
 .main-header__nav .sub-menu .menu-item {
@@ -214,20 +212,19 @@ section, footer, .content-area, main {
   display: block;
 }
 
-.main-header__nav .sub-menu a {
-  color: black;
+.main-header__nav .sub-menu .menu-item a {
   text-decoration: none;
   display: block;
-  padding: 0 1rem;
+  padding: 0.6rem 1rem;
 }
 
-.main-header__nav .sub-menu a li {
+.main-header__nav .sub-menu .menu-item a li {
   padding: 0;
   display: block;
   text-align: center;
 }
 
-.main-header__nav .sub-menu a:hover {
+.main-header__nav .sub-menu .menu-item a:hover {
   background-color: #ddd;
 }
 
@@ -269,6 +266,7 @@ section, footer, .content-area, main {
 ==============================================*/
 .mobile-menu {
   display: none;
+  margin-top: 80px;
 }
 
 .mobile-menu .menu {
@@ -283,8 +281,37 @@ section, footer, .content-area, main {
   text-decoration: none;
 }
 
+.mobile-menu .menu .menu-item:hover .sub-menu {
+  display: block;
+}
+
 .mobile-menu .sub-menu {
   display: none;
+  padding: 0;
+  background-color: #fff;
+  min-width: 140px;
+  z-index: 1;
+}
+
+.mobile-menu .sub-menu .menu-item {
+  padding: 0;
+  display: block;
+}
+
+.mobile-menu .sub-menu .menu-item a {
+  text-decoration: none;
+  display: block;
+  padding: 0.6rem 1rem;
+}
+
+.mobile-menu .sub-menu .menu-item a li {
+  padding: 0;
+  display: block;
+  text-align: center;
+}
+
+.mobile-menu .sub-menu .menu-item a:hover {
+  background-color: #ddd;
 }
 
 /* Hero
